@@ -154,8 +154,88 @@ IoT 개발자 데이터베이스 저장소
         - 쿼리 연습(집계함수부터) : [SQL](./day02/db03_select_집계함수부터.sql)
 
 ## 3일차
-- SQL 기초
-    - DDL
-    - DML 중 INSERT, UPDATE, DELETE
+- Visual Studio Code에서 MySQL 연동
+    - 확장 > MySQL 검색
+        - weijan chen 개인 개발자가 만든 MySQL 확장도 준수
+        - weijan chen 개발한 Database Client를 설치(추천)
+            - 데이터베이스 아이콘 생성
+        - Oracle에서 개발한 MySQL Shell for VS Code를 사용해도 좋으나 조금 불편
+    - Database Client
+        1. 툴바의 Database 아이콘 클릭
+        2. Create Connection 클릭
+        3. 정보 입력 > 연결 테스트
+
+            <img src='./image/connection.png' width='600'>
+
+        4. Workbench 처럼 사용
+
+            <img src='./image/workbench.png' width='600'>
+
+
+    - SQL 기초
+        - 기본 데이터형
+            - 데이터베이스에는 엄청 많은 데이터형이 존재(데이터의 사이즈 저장용량 절약을 위해서)
+            - 주요 데이터형
+                - smallInt(2byte) -65535가지 수(음수포함)를 저장 (-32768 ~ 32767)
+                - Int(4) - 모든 데이터 타입의 기준! 42억 정수(음수포함)를 저장
+                - BigInt(8) -Int보다 더 큰 수 저장
+                - Float(4) - 소수점아래 7자리까지 저장
+                - Decimal(5~17byte) - Float보다 더 큰 수 저장
+                - Char(n) - n은 가변(1 ~ 255). 고정길이 문자열
+                    - 주의점! Char(10)에 Hello 글자를 입력하면 **'Hello     '** 과 같이 저장!
+                - Varchar(n) - n(1 ~ 65535). 가변길이 문자열
+                    - 주의점! Varchar(10)에 Hello를 입력하면 **'Hello'** 저장됨
+                - Longtext(최대 4GB) - 뉴스나 영화스크립트 저장할 때 사용
+                - LongBlob(최대 4GB) - mp3, mp4 음악, 영화데이터 자체 저장할 때 사용
+                - Data(3) - 2025-02-27 까지 저장하는 타입
+                - DataTime(8) - 2025-02-27 10:46:34 까지 저장하는 타입
+                - JSON(8) - json 타입 데이터를 저장
+        - DDL CREATE
+            ```sql
+            CREATE DATABASE 데이터베이스명
+            [몇가지 사항];
+
+            CREATE TABLE 테이블명
+            (
+                속성(컬럼)명 제약사항들, ...
+                PRIMARY KEY (컬럼(들))
+                FOREIGN KEY (컬럼(들)) REFERENCES 테이블명(컬럼(들)) ON 제약사항
+            );
+            ```
+
+             - 테이블 생성 후 확인
+                1. 메뉴 Database > Reverse Engineer(데이터베이스)
+                2. 연결은 패스
+                3. Select Schemas to RE에서 특정 DB를 체크
+                4. Execute 버튼을 클릭
+                5. ERD 확인
+
+                <img src='./image/ERD.png' width='600'>
+
+        - DDL ALTER
+            ```sql
+            ALTER DATABASE 데이터베이스명
+            [몇가지 사항];
+
+            ALTER TABLE 테이블명
+                [ADD 속성명 데이터타입]
+                [DROP COLUMN 속성명]
+                [ALTER COLUMN 속성명 데이터타입]
+                -- ...
+            ```
+
+            - 테이블 수정
+        
+        - DDL DROP
+            ```sql
+            DROP [DATABASE|TABLE|INDEX...] 개체명
+            ```
+        - DML INSERT, UPDATE, DELETE
+    
+    - SQL 고급
+        - 내장함수, NULL
+
+## 4일차
 - SQL 고급
+    - 행번호 출력...
 
