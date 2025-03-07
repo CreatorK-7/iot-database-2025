@@ -247,7 +247,7 @@ IoT 개발자 데이터베이스 저장소
         ```sql
         -- 삽입
         INSERT INTO 테이블명 [(컬럼리스트)]
-        VALUE (값리스트);
+        VALUES (값리스트);  -- VALUE는 SQL 표준이 아님(MySQL, PostgreSQL 등에서만 사용가능)
 
         -- 다른테이블의 데이터 가져오기
         INSERT INTO 테이블명 [(컬럼리스트)]
@@ -370,6 +370,14 @@ IoT 개발자 데이터베이스 저장소
         - 락
 
 ## 7일차
+- Workbench Tip
+    - SQL툴 공통으로 SELECT 실행시 모든 행을 다 표시하지 않음.(성능저하 대비)
+    - Workbench는 1000개로 제한
+    - 성능테스트 시 1000개 제한 풀어줘야 함
+    - 메뉴 `Edit> Preferences > SQL Editor > SQL EXcution 에서 Limit Rows Count`를 조절
+
+    <img src="./image/Workbench_tip.png" width = "600">
+
 - 인덱스 실습: [SQL](./day07/db01_인덱스연습.sql)
     - 500만건 조회시 price로 검색
         - 인덱스가 없으면 0.67초 소요
@@ -380,10 +388,20 @@ IoT 개발자 데이터베이스 저장소
     - 서브쿼리 까지
 
 ## 8일차
-- 실무실습 : [SQL]()
+- 실무실습 : [SQL](./day08/db01_쿼리실습.sql)
     - 서브쿼리부터 
 - 데이터 모델링 실습
-- 파이썬 GUI DB연동
+    - 병원업무관리 ERD
+        - 요구사항으로 개체와 관계를 정립. 개체에 속하는 속성들, 식별자 결정
+        - ERwin | Workbench 모델링에서 ERD 작성
+        - 생성스크립트 : [SQL](./day08/db03_병원업무관리_스키마.sql)
+        - Workbench에서 DB생성 후 위 스크립트 실행. DB구현
+
+    <img src="./image/db006.png" width="800">
+
+    - SQL 연습
 
 ## 9일차
+- tkinter DB연동 GUI앱 개발
 - 코딩테스트
+
